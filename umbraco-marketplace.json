@@ -1,0 +1,37 @@
+{
+  "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "Title": "WarpSearch for Umbraco Search",
+  "Description": "Store and search your Umbraco content, media and members in WarpSearch, the serverless hybrid search engine. A drop-in provider for Umbraco Search: full-text relevance tiers, filters, multi-select facets, sorting, culture and segment variants and protected content, with no search cluster to run.",
+  "Category": "Search",
+  "AlternateCategory": "Headless",
+  "LicenseTypes": [
+    "Free"
+  ],
+  "PackageType": "Integration",
+  "AuthorDetails": {
+    "Name": "WarpSearch by BigData Boutique",
+    "Description": "WarpSearch is a serverless hybrid search engine from BigData Boutique, the search and data engineering company.",
+    "Url": "https://warpsearch.io",
+    "ImageUrl": "https://raw.githubusercontent.com/warpsearchio/WarpSearch.Umbraco.Search/main/docs/icon.png",
+    "SyncContributorsFromRepository": true
+  },
+  "DocumentationUrl": "https://github.com/warpsearchio/WarpSearch.Umbraco.Search#readme",
+  "IssueTrackerUrl": "https://github.com/warpsearchio/WarpSearch.Umbraco.Search/issues",
+  "Screenshots": [],
+  "Tags": [
+    "search",
+    "umbraco search",
+    "full-text search",
+    "facets",
+    "headless",
+    "serverless",
+    "warpsearch"
+  ],
+  "RelatedPackages": [
+    {
+      "PackageId": "Umbraco.Cms.Search.Core",
+      "Description": "Umbraco Search, the search abstraction this provider plugs into."
+    }
+  ],
+  "VersionDependencyMode": "SemVer"
+}

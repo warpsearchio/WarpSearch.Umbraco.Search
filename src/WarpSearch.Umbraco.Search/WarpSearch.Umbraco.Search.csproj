@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>WarpSearch.Umbraco.Search</PackageId>
+    <Title>WarpSearch for Umbraco Search</Title>
+    <Description>WarpSearch provider for Umbraco Search. Index and search Umbraco content, media and members in WarpSearch, the serverless hybrid search engine.</Description>
+    <PackageTags>umbraco-marketplace;umbraco;umbraco-search;search;warpsearch;full-text-search;facets</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\docs\icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Umbraco.Cms.Search.Core" Version="[18.2.0, 19.0.0)" />
+    <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="10.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="WarpSearch.Umbraco.Search.Tests" />
+  </ItemGroup>
+
+</Project>

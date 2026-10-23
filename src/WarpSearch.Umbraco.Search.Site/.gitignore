@@ -1,0 +1,4 @@
+appsettings.Local.json
+umbraco/Data/
+umbraco/Logs/
+wwwroot/media/

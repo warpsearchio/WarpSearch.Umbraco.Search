@@ -1,0 +1,13 @@
+bin/
+obj/
+.vs/
+.idea/
+*.user
+TestResults/
+artifacts/
+
+# secrets: API keys go in user secrets, environment variables or CI secrets, never in the repository
+appsettings.Local.json
+appsettings.*.local.json
+*.env
+.env*

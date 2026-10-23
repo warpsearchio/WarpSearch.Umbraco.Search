@@ -1,0 +1,19 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <!-- vulnerability advisories in transitive Umbraco dependencies are reported, not fatal -->
+    <WarningsNotAsErrors>NU1901;NU1902;NU1903;NU1904</WarningsNotAsErrors>
+    <Version>18.0.0</Version>
+    <Authors>BigData Boutique</Authors>
+    <Company>BigData Boutique</Company>
+    <Copyright>Copyright (c) BigData Boutique</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/warpsearchio/WarpSearch.Umbraco.Search</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/warpsearchio/WarpSearch.Umbraco.Search</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,5 @@
+WarpSearch.Umbraco.Search
+
+The document layout and query translation follow Kjac.SearchProvider.Elasticsearch
+(https://github.com/kjac/Kjac.SearchProvider.Elasticsearch), MIT License,
+Copyright (c) 2025 Kenn Jacobsen.
