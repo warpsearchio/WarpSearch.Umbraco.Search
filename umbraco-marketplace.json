@@ -1,7 +1,7 @@
 {
   "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
   "Title": "WarpSearch for Umbraco Search",
-  "Description": "Store and search your Umbraco content, media and members in WarpSearch, the serverless hybrid search engine. A drop-in provider for Umbraco Search: full-text relevance tiers, filters, multi-select facets, sorting, culture and segment variants and protected content, with no search cluster to run.",
+  "Description": "Use WarpSearch (https://warpsearch.io/) as the search provider for Umbraco Search. WarpSearch is a fast, affordable serverless search service: your content, media and member indexes live in WarpSearch instead of local Examine (Lucene) indexes, so there is no search cluster to run and no index to rebuild on every web server. Supports full-text relevance tiers, filters, multi-select facets, sorting, culture and segment variants, protected content and the backoffice search tools. Load-balanced sites share one index, and the package runs on WarpSearch's free plan.",
   "Category": "Search",
   "AlternateCategory": "Headless",
   "LicenseTypes": [
@@ -10,14 +10,13 @@
   "PackageType": "Integration",
   "AuthorDetails": {
     "Name": "WarpSearch by BigData Boutique",
-    "Description": "WarpSearch is a serverless hybrid search engine from BigData Boutique, the search and data engineering company.",
-    "Url": "https://warpsearch.io",
+    "Description": "WarpSearch is a fast, affordable serverless search service with keyword and vector search in one index, from the search experts at BigData Boutique. Learn more at https://warpsearch.io/",
+    "Url": "https://warpsearch.io/",
     "ImageUrl": "https://raw.githubusercontent.com/warpsearchio/WarpSearch.Umbraco.Search/main/docs/icon.png",
     "SyncContributorsFromRepository": true
   },
   "DocumentationUrl": "https://github.com/warpsearchio/WarpSearch.Umbraco.Search#readme",
   "IssueTrackerUrl": "https://github.com/warpsearchio/WarpSearch.Umbraco.Search/issues",
-  "Screenshots": [],
   "Tags": [
     "search",
     "umbraco search",
@@ -26,12 +25,6 @@
     "headless",
     "serverless",
     "warpsearch"
-  ],
-  "RelatedPackages": [
-    {
-      "PackageId": "Umbraco.Cms.Search.Core",
-      "Description": "Umbraco Search, the search abstraction this provider plugs into."
-    }
   ],
   "VersionDependencyMode": "SemVer"
 }

@@ -31,24 +31,32 @@ internal sealed class VerifyCollectionNotificationHandler : INotificationAsyncHa
         _logger = logger;
     }
 
-    public async Task HandleAsync(UmbracoApplicationStartingNotification notification, CancellationToken cancellationToken)
+    public Task HandleAsync(UmbracoApplicationStartingNotification notification, CancellationToken cancellationToken)
     {
         if (_serverRoleAccessor.CurrentServerRole is ServerRole.Subscriber)
         {
-            return;
+            return Task.CompletedTask;
         }
 
         if (string.IsNullOrWhiteSpace(_options.ApiKey))
         {
             _logger.LogError("WarpSearch:ApiKey is not configured. Search indexes stored in WarpSearch will not work until it is set.");
-            return;
+            return Task.CompletedTask;
         }
 
+        // checked in the background, so an unreachable WarpSearch, retried for up to a few minutes, does not hold up
+        // the site's startup
+        _ = Task.Run(VerifyAsync, CancellationToken.None);
+        return Task.CompletedTask;
+    }
+
+    private async Task VerifyAsync()
+    {
         try
         {
-            await _collectionManager.VerifyAsync(cancellationToken);
+            await _collectionManager.VerifyAsync();
         }
-        catch (Exception exception) when (exception is not OperationCanceledException || cancellationToken.IsCancellationRequested is false)
+        catch (Exception exception)
         {
             _logger.LogError(exception, "Could not check WarpSearch collection {Collection}", _options.CollectionName);
         }

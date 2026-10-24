@@ -15,5 +15,15 @@
     <PackageProjectUrl>https://github.com/warpsearchio/WarpSearch.Umbraco.Search</PackageProjectUrl>
     <RepositoryUrl>https://github.com/warpsearchio/WarpSearch.Umbraco.Search</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>https://github.com/warpsearchio/WarpSearch.Umbraco.Search/releases</PackageReleaseNotes>
+    <!-- Source Link and a symbol package, so the package can be debugged into -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 </Project>

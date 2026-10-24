@@ -1,4 +1,5 @@
 using System.Net;
+using Polly;
 
 namespace WarpSearch.Umbraco.Search.Client;
 
@@ -20,4 +21,10 @@ public sealed class WarpSearchException : Exception
     public string? Code { get; }
 
     public string? RequestId { get; }
+
+    // a request that failed, or that the resilience pipeline rejected: timed out, or not sent because the circuit
+    // breaker is open. Umbraco also references Polly 7, whose exceptions share the names, so match Polly 8 by assembly.
+    internal static bool IsRequestFailure(Exception exception)
+        => exception is WarpSearchException or HttpRequestException or TaskCanceledException
+           || exception.GetType().Assembly == typeof(ResiliencePipeline).Assembly;
 }

@@ -138,7 +138,7 @@ internal sealed class WarpSearchIndexer : IWarpSearchIndexer
                 : count > 0 ? HealthStatus.Healthy : HealthStatus.Empty;
             return new IndexMetadata(count, status, ProviderName);
         }
-        catch (Exception exception) when (exception is WarpSearchException or HttpRequestException or TaskCanceledException)
+        catch (Exception exception) when (WarpSearchException.IsRequestFailure(exception))
         {
             _logger.LogWarning(exception, "Could not count the documents of index {IndexAlias} in WarpSearch collection {Collection}", indexAlias, _collection);
             return new IndexMetadata(0, HealthStatus.Unknown, ProviderName);

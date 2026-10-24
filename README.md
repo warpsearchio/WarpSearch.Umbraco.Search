@@ -1,9 +1,15 @@
+<img src="https://raw.githubusercontent.com/warpsearchio/WarpSearch.Umbraco.Search/main/docs/logo.png" alt="WarpSearch" width="300">
+
 # WarpSearch for Umbraco Search
 
-[WarpSearch](https://warpsearch.io) is a serverless hybrid search engine. This package is a provider for
-[Umbraco Search](https://docs.umbraco.com/umbraco-search): it stores your Umbraco search indexes in WarpSearch and
-answers searches from there, so you get fast full-text search, filters and facets without running a search
-cluster or keeping Lucene indexes on your web servers.
+[![NuGet](https://img.shields.io/nuget/v/WarpSearch.Umbraco.Search)](https://www.nuget.org/packages/WarpSearch.Umbraco.Search)
+[![Umbraco Marketplace](https://img.shields.io/badge/Umbraco-Marketplace-3544b1)](https://marketplace.umbraco.com/package/warpsearch.umbraco.search)
+[![Build](https://github.com/warpsearchio/WarpSearch.Umbraco.Search/actions/workflows/build.yml/badge.svg)](https://github.com/warpsearchio/WarpSearch.Umbraco.Search/actions/workflows/build.yml)
+
+[WarpSearch](https://warpsearch.io/) is a fast, affordable serverless search service. This package is a provider for
+[Umbraco Search](https://docs.umbraco.com/umbraco-search): it stores your Umbraco content, media and member indexes
+in WarpSearch and answers searches from there, so you get fast full-text search, filters and facets without running
+a search cluster or keeping Examine (Lucene) indexes on your web servers.
 
 - Full-text search with Umbraco's relevance tiers (`TextsR1` to `TextsR3`), prefix matching as you type
 - Keyword, integer, decimal and date filters, exact and range
@@ -18,7 +24,7 @@ cluster or keeping Lucene indexes on your web servers.
 ## Requirements
 
 - Umbraco 18 with Umbraco Search (`Umbraco.Cms.Search.Core` 18.2 or later)
-- A WarpSearch account. The free plan is enough to start.
+- A [WarpSearch](https://warpsearch.io/) account. The free plan is enough to start.
 
 ## Set up WarpSearch
 
@@ -163,10 +169,16 @@ To run the demo site, copy `src/WarpSearch.Umbraco.Search.Site/appsettings.Local
 `admin@example.com` / `Admin1234567!`. The demo site is for local use only: in Development it serves unauthenticated
 demo endpoints (`/api/demo/edit`, `/api/demo/rebuild`) that answer only on localhost.
 
+To release, push a version tag such as `18.0.1` or `v18.0.1` (`18.1.0-beta.1` for a prerelease). The release
+workflow tests the package, publishes it to NuGet with that version and creates a GitHub release; the Umbraco
+Marketplace picks it up from NuGet.
+
 Restore reports vulnerability advisories (NU1902, NU1903) for packages that Umbraco depends on. They are reported as
 warnings and do not fail the build.
 
 ## License
 
-MIT. The document layout and query translation follow Kenn Jacobsen's
-[Elasticsearch provider for Umbraco Search](https://github.com/kjac/Kjac.SearchProvider.Elasticsearch); see `NOTICE`.
+MIT, see [LICENSE](https://github.com/warpsearchio/WarpSearch.Umbraco.Search/blob/main/LICENSE). The document
+layout and query translation follow Kenn Jacobsen's
+[Elasticsearch provider for Umbraco Search](https://github.com/kjac/Kjac.SearchProvider.Elasticsearch); see
+[NOTICE](https://github.com/warpsearchio/WarpSearch.Umbraco.Search/blob/main/NOTICE).

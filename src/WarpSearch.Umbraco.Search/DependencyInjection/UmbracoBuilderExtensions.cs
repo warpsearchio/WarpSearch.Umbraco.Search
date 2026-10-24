@@ -54,7 +54,7 @@ public static class WarpSearchUmbracoBuilderExtensions
     /// </summary>
     public static IUmbracoBuilder AddWarpSearchNotificationHandlers(this IUmbracoBuilder builder)
     {
-        // check the collection before Umbraco has finished starting
+        // check the collection on startup
         builder.AddNotificationAsyncHandler<UmbracoApplicationStartingNotification, VerifyCollectionNotificationHandler>();
 
         // commit the documents of a rebuild when it completes
@@ -81,12 +81,19 @@ public static class ServiceCollectionExtensions
             {
                 WarpSearchOptions options = serviceProvider.GetRequiredService<IOptions<WarpSearchOptions>>().Value;
                 httpClient.BaseAddress = new Uri(WarpSearchConstants.ApiUrl);
+                // the resilience pipeline below times requests out; HttpClient's own 100 second default would cut
+                // its retries short
+                httpClient.Timeout = Timeout.InfiniteTimeSpan;
                 httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("WarpSearch.Umbraco.Search", typeof(WarpSearchClient).Assembly.GetName().Version?.ToString(3)));
                 if (string.IsNullOrWhiteSpace(options.ApiKey) is false)
                 {
                     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", options.ApiKey);
                 }
             })
+            // singletons hold on to the client, so connections are recycled by the handler rather than by the
+            // factory, which keeps DNS changes of the API picked up
+            .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler { PooledConnectionLifetime = TimeSpan.FromMinutes(2) })
+            .SetHandlerLifetime(Timeout.InfiniteTimeSpan)
             // retries 429, 5xx (including "warming up" 503s) and timeouts with backoff, honouring Retry-After;
             // every write is an idempotent upsert or delete by id, so retrying them is safe
             .AddResilienceHandler("resilience", (pipeline, context) =>

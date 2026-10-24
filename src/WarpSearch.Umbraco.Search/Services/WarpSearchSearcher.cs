@@ -86,7 +86,7 @@ internal sealed class WarpSearchSearcher : IWarpSearchSearcher
         {
             response = await _client.SearchAsync(_collection, body);
         }
-        catch (Exception exception) when (exception is WarpSearchException or HttpRequestException or TaskCanceledException)
+        catch (Exception exception) when (WarpSearchException.IsRequestFailure(exception))
         {
             _logger.LogError(exception, "WarpSearch search of index {IndexAlias} in {Collection} failed", indexAlias, _collection);
             return new SearchResult(0, [], []);

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <PackageId>WarpSearch.Umbraco.Search</PackageId>
     <Title>WarpSearch for Umbraco Search</Title>
-    <Description>WarpSearch provider for Umbraco Search. Index and search Umbraco content, media and members in WarpSearch, the serverless hybrid search engine.</Description>
+    <Description>Umbraco Search provider for WarpSearch (https://warpsearch.io/), the fast, affordable serverless search service. Your Umbraco content, media and member indexes live in WarpSearch instead of local Examine (Lucene) indexes on your web servers, with full-text relevance, filters, multi-select facets, sorting, culture and segment variants and protected content. No search cluster to run, one shared index for load-balanced sites, and it runs on WarpSearch's free plan.</Description>
     <PackageTags>umbraco-marketplace;umbraco;umbraco-search;search;warpsearch;full-text-search;facets</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
